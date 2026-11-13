@@ -1,0 +1,23 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId}/notes/{noteId} {
+      // Users can read and delete only their own notes.
+      allow read, delete: if request.auth != null
+                         && request.auth.uid == userId;
+
+      // Users can create notes only in their own UID folder.
+      allow create: if request.auth != null
+                    && request.auth.uid == userId
+                    && request.resource.data.keys().hasOnly(['text', 'createdAt'])
+                    && request.resource.data.text is string
+                    && request.resource.data.text.size() > 0
+                    && request.resource.data.text.size() <= 10000
+                    && request.resource.data.createdAt == request.time;
+
+      // Editing is not implemented in this version.
+      allow update: if false;
+    }
+  }
+}
