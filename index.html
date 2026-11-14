@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Personal Space</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<section id="signupPage" class="auth-card">
+<h1>Create Account</h1><p class="subtitle">New accounts start with the Student role.</p>
+<form id="signupForm">
+<input id="signupUsername" placeholder="Username" minlength="3" maxlength="30" required>
+<input id="signupEmail" type="email" placeholder="Email address" required>
+<input id="signupPassword" type="password" placeholder="Password" minlength="6" required>
+<input id="confirmPassword" type="password" placeholder="Confirm password" required>
+<button type="submit" id="signupButton">Sign Up</button>
+</form>
+<p id="signupMessage" class="message" aria-live="polite"></p>
+<p class="switch">Already registered? <a href="#" id="showLogin">Login</a></p>
+</section>
+
+<section id="loginPage" class="auth-card hidden">
+<h1>Welcome Back!</h1><p class="subtitle">Login to your personal space</p>
+<form id="loginForm">
+<input id="loginEmail" type="email" placeholder="Email address" required>
+<input id="loginPassword" type="password" placeholder="Password" required>
+<button type="submit" id="loginButton">Login</button>
+</form>
+<p id="loginMessage" class="message" aria-live="polite"></p>
+<a href="#" id="forgotPassword">Forgot Password?</a>
+<p class="switch">New user? <a href="#" id="showSignup">Sign Up</a></p>
+</section>
+
+<section id="dashboardPage" class="dashboard hidden">
+<header class="dashboard-header">
+<div><h1 id="dashboardTitle">My Personal Space</h1>
+<p>Welcome, <strong id="displayUsername"></strong></p>
+<span id="roleBadge" class="role-badge"></span></div>
+<button id="logoutButton" class="logout">Logout</button>
+</header>
+
+<section id="teacherDashboard" class="role-panel hidden">
+<div class="welcome-card teacher-card"><h2>Teacher Dashboard</h2><p>Welcome to your teaching workspace.</p></div>
+<div class="feature-grid">
+<article class="feature-card"><h3>Class Resources</h3><p>Plan and organise your teaching materials.</p></article>
+<article class="feature-card"><h3>Assignments</h3><p>Use this area to manage class assignments.</p></article>
+<article class="feature-card"><h3>Teaching Notes</h3><p>Keep your own teaching notes below.</p></article>
+</div>
+</section>
+
+<section id="studentDashboard" class="role-panel hidden">
+<div class="welcome-card student-card"><h2>Student Dashboard</h2><p>Welcome to your learning space.</p></div>
+<div class="feature-grid">
+<article class="feature-card"><h3>My Learning</h3><p>Keep track of the topics you are studying.</p></article>
+<article class="feature-card"><h3>My Tasks</h3><p>Use this area for your learning tasks.</p></article>
+<article class="feature-card"><h3>My Notes</h3><p>Save your personal study notes below.</p></article>
+</div>
+</section>
+
+<section class="notes-card">
+<h2 id="notesHeading">My Personal Notes</h2>
+<textarea id="noteInput" placeholder="Write a personal note..." maxlength="10000"></textarea>
+<button id="saveNote">Save Note</button>
+<p id="noteMessage" class="message" aria-live="polite"></p>
+<h3>Saved Notes</h3><div id="notesList"></div>
+</section>
+</section>
+</div>
+<script type="module" src="script.js"></script>
+</body>
+</html>
